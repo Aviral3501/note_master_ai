@@ -20,7 +20,7 @@ export default function Home() {
                 </div>
 
                 <div className="mt-8 flex justify-center items-center">
-                <Link href={'/dashboeard'}>
+                <Link href={'/dashboard'}>
                     <Button className="bg-green-700/90">Get Started 
                     <ArrowRight className="ml-2 w-5 h-5" strokeWidth={3}/>
                     </Button>
