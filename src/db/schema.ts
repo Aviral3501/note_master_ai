@@ -12,3 +12,6 @@ export const $notes = pgTable('notes', {
 })
 
 export type NoteType = typeof $notes.$inferInsert;
+
+//drizzle-orm is used to interact with the database 
+// drizzle-kit is a developer tool which help us sync the changes made to the neon database
