@@ -60,7 +60,7 @@ const DashboardPage = async (props: Props) => {
                         <h2 className="text-xl text-gray-500 mt-4 font-semibold ">You have no notes yet</h2>
                     </div>
                     {/* all the notes */}
-                    <div className="grid sm:grid-cols-3 md:grid-cols-5 grid-cols-1 gap-3 ">
+                    <div className="grid sm:grid-cols-3 md:grid-cols-5 grid-cols-1 gap-3 mt-2">
                         <CreateNoteDialog/>
 
                     </div>
