@@ -13,12 +13,14 @@ import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
+import { toast } from 'react-hot-toast';
 
 type Props = {};
 
 function CreateNoteDialog({}: Props) {
   const [input, setInput] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+  const [isAttemptedEmptySubmit, setIsAttemptedEmptySubmit] = useState(false);
 
   const createNotebook = useMutation({
     mutationFn: async () => {
@@ -30,19 +32,26 @@ function CreateNoteDialog({}: Props) {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (input === "") {
-      window.alert("Please enter the name of the book");
+      if (!isAttemptedEmptySubmit) {
+        toast.error("Enter a name for the book.");
+        setIsAttemptedEmptySubmit(true);
+      }
       return;
     }
+
+    setIsAttemptedEmptySubmit(false);
 
     // if name is entered, create the notebook
     createNotebook.mutate(undefined, {
       onSuccess: () => {
         console.log("Notebook created");
+        toast.success("Notebook created");
         setInput("");
         setIsOpen(false);
       },
       onError: (error) => {
         console.log("Error creating notebook");
+        toast.error("Error creating a notebook");
         console.error(error);
       },
     });
@@ -101,6 +110,7 @@ function CreateNoteDialog({}: Props) {
 }
 
 export default CreateNoteDialog;
+
 
 
 

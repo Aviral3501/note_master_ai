@@ -1,6 +1,6 @@
 //  /api/createNotebook
 
-import { generateImagePrompt } from "@/lib/openai";
+// import { generateImagePrompt } from "@/lib/openai";
 import { auth } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 
@@ -16,10 +16,12 @@ export async function POST(req: Request){
     const {name} = body;
 
     // get the image description from openai
-    const image_description = await generateImagePrompt(name);
-    console.log(image_description);
 
-    return new NextResponse("Image description generated",{status:200})
+
+    // const image_description = await generateImagePrompt(name);
+    // console.log(image_description);
+
+    // return new NextResponse("Image description generated",{status:200})
 
     // get the image form dalle based on the name
 }
